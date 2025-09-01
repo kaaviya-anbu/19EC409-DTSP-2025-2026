@@ -11,65 +11,32 @@ PC installed with SCILAB.
 clc;
 clear;
 
+// Take input discrete signal
+x = input("Enter discrete signal as [x1 x2 ...]: ");
+N = length(x);
 
-N = input("Enter the length of the signal N: ");
-x = zeros(1, N);
-
-disp("Enter the signal values:");
-for i = 1:N
-    x(i) = input("x(" + string(i-1) + ") = ");
-end
-
-
+// Initialize DFT output
 X = zeros(1, N);
 
-
+// DFT calculation using formula
 for k = 0:N-1
-    sum_val = 0;
     for n = 0:N-1
-        sum_val = sum_val + x(n+1) * exp(-%i * 2 * %pi * k * n / N);
-    end
-    X(k+1) = sum_val;
-end
-
-
-str_out = "{";
-for k = 1:N
-    real_part = round(real(X(k))*1000)/1000; 
-    imag_part = round(imag(X(k))*1000)/1000;
-    
-    if imag_part >= 0 then
-        str_out = str_out + string(real_part) + " + j" + string(imag_part);
-    else
-        str_out = str_out + string(real_part) + " - j" + string(abs(imag_part));
-    end
-    
-    if k < N then
-        str_out = str_out + ", ";
-    else
-        str_out = str_out + "}";
+        X(k+1) = X(k+1) + x(n+1) * exp(-%i * 2 * %pi * k * n / N);
     end
 end
 
-disp("X(k) = " + str_out);
+// Frequency axis (normalized)
+f = (0:N-1) / N;
 
-
-freq_index = 0:N-1;
-
-subplot(2,1,1);
-plot2d3(freq_index, abs(X));
-xlabel("Frequency index (k)");
-ylabel("|X(k)|");
-title("Magnitude Spectrum (Discrete)");
-
-subplot(2,1,2);
-plot2d3(freq_index, atan(imag(X), real(X)));
-xlabel("Frequency index (k)");
-ylabel("Phase (radians)");
-title("Phase Spectrum (Discrete)");
+// Plot magnitude spectrum
+plot(f, abs(X));
+xlabel("Normalized Frequency");
+ylabel("Magnitude");
+title("Discrete Fourier Transform )");
 ```
 
 # OUTPUT: 
+<img width="911" height="874" alt="image" src="https://github.com/user-attachments/assets/cdfce12a-e9c4-43ca-9ed7-d6bcc23a627e" />
 
 
 # RESULT: 
