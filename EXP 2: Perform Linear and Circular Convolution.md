@@ -71,10 +71,11 @@ disp("Circular Convolution Result:");
 disp(y);
 
 # OUTPUT (Linear Convolution): 
- 
+<img width="908" height="531" alt="image" src="https://github.com/user-attachments/assets/cf097506-87e5-49c0-97d0-9043b2672271" />
 
 
 # OUTPUT (Circular Convolution): 
+<img width="908" height="375" alt="image" src="https://github.com/user-attachments/assets/ba078b9e-6855-4d1d-a651-8823c0033997" />
 
 
 # RESULT: 
