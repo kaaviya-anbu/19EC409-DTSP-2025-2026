@@ -71,14 +71,10 @@ disp("Circular Convolution Result:");
 disp(y);
 
 # OUTPUT (Linear Convolution): 
- "Linear Convolution Result:"
-
-   1.   3.   7.   12.   12.   11.   4.
+ 
 
 
 # OUTPUT (Circular Convolution): 
-"Circular Convolution Result:"
 
-   11.   9.   10.   12.
 
 # RESULT: 
