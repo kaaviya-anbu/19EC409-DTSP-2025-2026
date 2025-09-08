@@ -7,36 +7,39 @@ To Obtain DFT and FFT of a given sequence in SCILAB.
 PC installed with SCILAB. 
 
 # PROGRAM: 
-```
 clc;
 clear;
-
-// Take input discrete signal
-x = input("Enter discrete signal as [x1 x2 ...]: ");
+x = [1 2 3 4];
 N = length(x);
+n = 0:N-1;
+X = zeros(1,N);
 
-// Initialize DFT output
-X = zeros(1, N);
-
-// DFT calculation using formula
 for k = 0:N-1
-    for n = 0:N-1
-        X(k+1) = X(k+1) + x(n+1) * exp(-%i * 2 * %pi * k * n / N);
+    for m = 0:N-1
+        X(k+1) = X(k+1) + x(m+1)exp(-%i*2%pi*k*m/N);
     end
 end
 
-// Frequency axis (normalized)
-f = (0:N-1) / N;
+Y = fft(x,-1);
 
-// Plot magnitude spectrum
-plot(f, abs(X));
-xlabel("Normalized Frequency");
-ylabel("Magnitude");
-title("Discrete Fourier Transform )");
-```
+figure;
+subplot(3,1,1);
+plot2d3(n,x);
+xlabel("n"); ylabel("x[n]");
+title("Input Sequence");
+
+subplot(3,1,2);
+plot2d3(n,abs(X));
+xlabel("k"); ylabel("|X(k)|");
+title("DFT Magnitude Spectrum (Direct)");
+
+subplot(3,1,3);
+plot2d3(n,abs(Y));
+xlabel("k"); ylabel("|Y(k)|");
+title("FFT Magnitude Spectrum (Built-in)");
 
 # OUTPUT: 
-<img width="911" height="874" alt="image" src="https://github.com/user-attachments/assets/cdfce12a-e9c4-43ca-9ed7-d6bcc23a627e" />
+
 
 
 # RESULT: 
