@@ -8,8 +8,7 @@
 PC installed with SCILAB. 
 
 # PROGRAM (Linear Convolution): 
-
-// Linear Convolution
+~~~
 clear;
 clc;
 close;
@@ -44,6 +43,7 @@ subplot(3,1,3);
 plot2d3(ny, y, style=3);
 xlabel("Time"); ylabel("Amplitude");
 title("Graphical Representation of Output Signal y");
+~~~
 
 # PROGRAM (Circular Convolution): 
 
