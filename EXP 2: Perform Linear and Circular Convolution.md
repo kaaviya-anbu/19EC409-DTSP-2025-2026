@@ -10,35 +10,40 @@ PC installed with SCILAB.
 # PROGRAM (Linear Convolution): 
 
 // Linear Convolution
-clc;
 clear;
-
-
-x = [1,1,2,1];
-h = [1,2,3,4];
-
-
-Lx = length(x);
-Lh = length(h);
-Ly = Lx + Lh - 1;
-
-
-x_padded = [x, zeros(1, Lh - 1)];
-h_padded = [h, zeros(1, Lx - 1)];
-
-
-y = zeros(1, Ly);
-for n = 1:Ly
-    for k = 1:n
-        if (k <= Lx & (n - k + 1) <= Lh) then
-            y(n) = y(n) + x(k) * h(n - k + 1);
+clc;
+close;
+x = [1 1 2 1];
+h = [1 2 3 4];
+m = length(x);
+n = length(h);
+N = m + n - 1;
+y = zeros(1, N);
+for i = 1:N
+    sum_val = 0;
+    for j = 1:i
+        if (j <= m) & ((i - j + 1) <= n) then
+            sum_val = sum_val + x(j) * h(i - j + 1);
         end
     end
+    y(i) = sum_val;
 end
-
-disp("Linear Convolution Result:");
-disp(y);
-
+nx = 0:m-1;      
+nh = 0:n-1;      
+ny = 0:N-1;      
+scf(0);
+subplot(3,1,1);
+plot2d3(nx, x, style=2);    // stem plot
+xlabel("Time"); ylabel("Amplitude");
+title("Graphical Representation of Input Signal X");
+subplot(3,1,2);
+plot2d3(nh, h, style=5);
+xlabel("Time"); ylabel("Amplitude");
+title("Graphical Representation of Impulse Signal h");
+subplot(3,1,3);
+plot2d3(ny, y, style=3);
+xlabel("Time"); ylabel("Amplitude");
+title("Graphical Representation of Output Signal y");
 
 # PROGRAM (Circular Convolution): 
 
