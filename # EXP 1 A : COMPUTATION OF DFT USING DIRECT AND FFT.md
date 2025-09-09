@@ -43,6 +43,8 @@ title("FFT Magnitude Spectrum (Built-in)");
 ```
 
 # OUTPUT: 
+<img width="1258" height="885" alt="image" src="https://github.com/user-attachments/assets/ca3fdf8e-b095-46a7-9ed4-9c98f26364ee" />
+
 
 
 # RESULT: 
